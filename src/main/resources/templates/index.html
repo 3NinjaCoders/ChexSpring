@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/index}" method="post">
+		<input type="text" id="username" name="username">
+		<input type="password" id="password" name="password">
+		<button type="submit">Zaloguj</button>
+		<input type="checkbox" id="remember-me" name="remember-me">
+		<label for="remember-me">Remember me?</label>
+	</form>
+</body>
+</html>
