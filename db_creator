@@ -1,0 +1,12 @@
+CREATE SCHEMA `ChexDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+
+USE `ChexDB`
+
+CREATE TABLE `ChexDB`.`user_auth` (
+  `username` VARCHAR(60) NOT NULL,
+  `password` VARCHAR(60) NOT NULL,
+  `user_id` INT NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  `active` INT NOT NULL,
+  PRIMARY KEY (`username`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC));

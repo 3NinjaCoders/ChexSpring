@@ -9,14 +9,14 @@ public class UserAuth {
 	@Id
 	private String username;
 	private String password;
-	private long id;
+	private long user_id;
 	private String role;
 	private int active;
 	
 	public UserAuth() {
 	}
-	public UserAuth(long id, String username, String password, String role) {
-		this.id = id;
+	public UserAuth(long user_id, String username, String password, String role) {
+		this.user_id = user_id;
 		this.username = username;
 		this.password = password;
 		this.role = role;
@@ -34,11 +34,11 @@ public class UserAuth {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getId() {
-		return id;
+	public long getUser_id() {
+		return user_id;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
 	}
 	public String getRole() {
 		return role;
