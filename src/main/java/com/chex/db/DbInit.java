@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.chex.model.UserAuth;
 
-@Service
+//@Service
 public class DbInit implements CommandLineRunner {
 	private UserAuthRepository userRepository;
 	private PasswordEncoder passwordEndcoder;
@@ -23,10 +23,10 @@ public class DbInit implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		this.userRepository.deleteAll();
 		
-		UserAuth pk = new UserAuth(1, "pk", passwordEndcoder.encode("123"), "USER");
+		//UserAuth pk = new UserAuth(1, "p@k", passwordEndcoder.encode("123"), "USER");
 		UserAuth admin = new UserAuth(0,"admin", passwordEndcoder.encode("123"), "ADMIN");	
 		
-		List<UserAuth> users = Arrays.asList(pk, admin);
+		List<UserAuth> users = Arrays.asList(admin);
 		
 		this.userRepository.saveAll(users);
 	}

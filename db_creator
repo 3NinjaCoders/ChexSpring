@@ -10,3 +10,20 @@ CREATE TABLE `ChexDB`.`user_auth` (
   `active` INT NOT NULL,
   PRIMARY KEY (`username`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC));
+
+  CREATE TABLE `ChexDB`.`users` (
+  `user_id` INT NOT NULL,
+  `firstName` VARCHAR(45) NOT NULL,
+  `lastName` VARCHAR(45) NOT NULL,
+  `publicName` VARCHAR(45) NOT NULL,
+  `sex` INT NOT NULL,
+  `date_of_registration` DATE NOT NULL,
+  `date_of_birth` DATE NULL,
+  `profil_photo` VARCHAR(150) NULL,
+  `city` VARCHAR(45) NULL,
+  `country` VARCHAR(45) NULL,
+  `ulevel` INT NULL,
+  `exp` INT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC));
+  

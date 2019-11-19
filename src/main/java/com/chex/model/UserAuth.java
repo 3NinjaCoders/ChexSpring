@@ -52,4 +52,9 @@ public class UserAuth {
 	public void setActive(int active) {
 		this.active = active;
 	}
+	@Override
+	public String toString() {
+		return "UserAuth [username=" + username + ", password=" + password + ", user_id=" + user_id + ", role=" + role
+				+ ", active=" + active + "]";
+	}
 }

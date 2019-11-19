@@ -11,11 +11,12 @@ public class HomeController {
 	@RequestMapping("/")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("message", "");
+		mv.addObject("wrong_message", "");
+		mv.addObject("info_message", "");
 		return mv;
 	}
 	
-	@GetMapping("/registration")
+	@GetMapping("/toregistration")
 	public String toRegistration() {
 		return "registration";
 	}
@@ -28,7 +29,7 @@ public class HomeController {
 	@RequestMapping("/invalidcredential")
 	public ModelAndView invalidcredential() {
 		ModelAndView mv = new ModelAndView("/index");
-		mv.addObject("message", "Niepoprawne dane");
+		mv.addObject("wrong_message", "Niepoprawne dane");
 		return mv;
 	}
 	
