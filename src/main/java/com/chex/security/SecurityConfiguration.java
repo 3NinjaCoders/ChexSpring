@@ -46,6 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.loginPage("/index").permitAll()
 			.successHandler(customAuthenticationHandler)
+			.failureForwardUrl("/invalidcredential")
 		
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/index");

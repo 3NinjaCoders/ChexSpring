@@ -53,7 +53,10 @@ public class UserAutPrinciple implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return userAuth.getActive() == 1;
+		if(userAuth != null)
+			return userAuth.getActive() == 1;
+		else 
+			return false;
 	}
 
 }
