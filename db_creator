@@ -13,9 +13,9 @@ CREATE TABLE `ChexDB`.`user_auth` (
 
   CREATE TABLE `ChexDB`.`users` (
   `user_id` INT NOT NULL,
-  `firstName` VARCHAR(45) NOT NULL,
-  `lastName` VARCHAR(45) NOT NULL,
-  `publicName` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `public_name` VARCHAR(45) NOT NULL,
   `sex` INT NOT NULL,
   `date_of_registration` DATE NOT NULL,
   `date_of_birth` DATE NULL,
