@@ -27,3 +27,22 @@ CREATE TABLE `ChexDB`.`user_auth` (
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC));
   
+CREATE TABLE `ChexDB`.`categories` (
+  `category` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`category`));
+
+CREATE TABLE `ChexDB`.`places` (
+  `place_id` VARCHAR(14) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `x` DOUBLE NOT NULL,
+  `y` DOUBLE NOT NULL,
+  `photo_url` VARCHAR(150) NULL,
+  `description` TEXT NULL,
+  `num_vote` INT NULL,
+  `num_positive` INT NULL,
+  `points` INT NULL,
+  `category` VARCHAR(45) NULL,
+  PRIMARY KEY (`place_id`),
+  UNIQUE INDEX `place_id_UNIQUE` (`place_id` ASC));
+
+  

@@ -12,6 +12,7 @@ import com.chex.model.UserAuth;
 
 public class UserAutPrinciple implements UserDetails {
 
+	private static final long serialVersionUID = 1L;
 	UserAuth userAuth;
 	
 	public UserAutPrinciple(UserAuth userAuth) {

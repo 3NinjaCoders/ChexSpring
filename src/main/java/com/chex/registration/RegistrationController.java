@@ -3,6 +3,7 @@ package com.chex.registration;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,8 @@ public class RegistrationController {
 	
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
+	private PasswordEncoder passwordEndcoder;
 	
 	@RequestMapping("/registration")
 	public ModelAndView registration(RegistrationModel regModel) {
@@ -35,14 +38,14 @@ public class RegistrationController {
 			return mv;
 		}
 		User user = buildUser(regModel);
+		
 		userDAO.save(user);
 		System.out.println(user);
+		
 		UserAuth userA = buildUserAuth(regModel);
 		userA.setUser_id(user.getUser_id());
-		
+		System.out.println(userA);
 		userAutreop.save(userA);
-		
-		
 		
 		mv.addObject("info_message", message);
 		mv.setViewName("index");
@@ -62,7 +65,6 @@ public class RegistrationController {
 		Date date_of_reg = new Date(milis);
 		
 		user.setDate_of_registration(date_of_reg);
-		System.out.println(user.getDate_of_registration());
 		
 		Date date_of_birth = new Date(0);
 		user.setDate_of_birth(date_of_birth);
@@ -76,7 +78,7 @@ public class RegistrationController {
 	
 	private UserAuth buildUserAuth(RegistrationModel regModel) {
 		UserAuth userA = new UserAuth();
-		userA.setPassword(regModel.getPassword());
+		userA.setPassword(passwordEndcoder.encode(regModel.getPassword()));
 		userA.setUsername(regModel.getUsername());
 		userA.setRole("USER");
 		userA.setActive(0);
