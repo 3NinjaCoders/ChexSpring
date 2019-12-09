@@ -2,9 +2,8 @@ package com.chex.model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,8 +12,8 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long user_id;
+	@Column(name = "user_id")
+	private long userId;
 	private String first_name;
 	private String last_name;
 	private String public_name;
@@ -26,11 +25,12 @@ public class User {
 	private String country;
 	private int ulevel;
 	private int exp;
-	public long getUser_id() {
-		return user_id;
+	
+	public long getUserId() {
+		return userId;
 	}
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	public void setUserId(long user_id) {
+		this.userId = user_id;
 	}
 	public String getFirst_name() {
 		return first_name;
@@ -100,7 +100,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", public_name="
+		return "User [user_id=" + userId + ", first_name=" + first_name + ", last_name=" + last_name + ", public_name="
 				+ public_name + ", sex=" + sex + ", date_of_registration=" + date_of_registration + ", date_of_birth="
 				+ date_of_birth + ", profil_photo=" + profil_photo + ", city=" + city + ", country=" + country
 				+ ", ulevel=" + ulevel + ", exp=" + exp + "]";

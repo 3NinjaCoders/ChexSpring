@@ -1,22 +1,26 @@
 package com.chex.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class UserAuth {
 	
 	@Id
+	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long userId;
 	private String username;
 	private String password;
-	private long user_id;
 	private String role;
 	private int active;
 	
 	public UserAuth() {
 	}
-	public UserAuth(long user_id, String username, String password, String role) {
-		this.user_id = user_id;
+	public UserAuth(String username, String password, String role) {
 		this.username = username;
 		this.password = password;
 		this.role = role;
@@ -34,11 +38,11 @@ public class UserAuth {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getUser_id() {
-		return user_id;
+	public long getUserId() {
+		return userId;
 	}
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	public void setUserId(long user_id) {
+		this.userId = user_id;
 	}
 	public String getRole() {
 		return role;
@@ -54,7 +58,7 @@ public class UserAuth {
 	}
 	@Override
 	public String toString() {
-		return "UserAuth [username=" + username + ", password=" + password + ", user_id=" + user_id + ", role=" + role
+		return "UserAuth [username=" + username + ", password=" + password + ", user_id=" + userId + ", role=" + role
 				+ ", active=" + active + "]";
 	}
 }

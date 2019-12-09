@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chex.db.MyFriendsDAO;
 import com.chex.db.UserAuthRepository;
 import com.chex.db.UserDAO;
+import com.chex.model.MyFriends;
 import com.chex.model.RegistrationModel;
 import com.chex.model.User;
 import com.chex.model.UserAuth;
@@ -19,11 +21,12 @@ public class RegistrationController {
 	
 	@Autowired
 	UserAuthRepository userAutreop;
-	
 	@Autowired
 	UserDAO userDAO;
 	@Autowired
 	private PasswordEncoder passwordEndcoder;
+	@Autowired
+	private MyFriendsDAO myFriendsDAO;
 	
 	@RequestMapping("/registration")
 	public ModelAndView registration(RegistrationModel regModel) {
@@ -37,15 +40,15 @@ public class RegistrationController {
 			mv.setViewName("registration");
 			return mv;
 		}
-		User user = buildUser(regModel);
-		
-		userDAO.save(user);
-		System.out.println(user);
 		
 		UserAuth userA = buildUserAuth(regModel);
-		userA.setUser_id(user.getUser_id());
-		System.out.println(userA);
 		userAutreop.save(userA);
+		
+		User user = buildUser(regModel);
+		user.setUserId(userA.getUserId());
+		userDAO.save(user);
+		
+		MyFriends mf = new MyFriends(userA.getUserId(), "");
 		
 		mv.addObject("info_message", message);
 		mv.setViewName("index");
