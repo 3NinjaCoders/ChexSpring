@@ -21,8 +21,7 @@ public class Invitation {
 	public Invitation() {
 	}
 
-	public Invitation(Long pk, Long user_id, Long inviters) {
-		this.pk = pk;
+	public Invitation(Long user_id, Long inviters) {
 		this.userId = user_id;
 		this.inviters = inviters;
 	}

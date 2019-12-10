@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/css/all/all_common_style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/all/registration_style.css" />
+</head>
+<body>
+registration
+	<a href="/">Wróć do logowania</a>
+	<form th:action="@{/registration}" method="post">
+		<p id="ivalid_login_message" th:text="${wrong_message}"/>
+		Email (login) <input type="email" name="username" value="p@p"><br>
+		Hasło <input type="password"  name="password" value="xxxxxx1"><br>
+		Powtórz hasło: <input type="password" name="password2" value="xxxxxx1"><br>
+		Imię: <input type="text" name="firstName" value="piotr"><br>
+		Nazwisko: <input type="text" name="lastName" value="Konicki"><br>
+		Płeć: <input type="radio" name="sex" checked="true" value="M"><input type="radio" name="sex" value="F"><br>
+		<button type="submit">Zarejestruj</button>
+	</form>
+</body>
+</html>

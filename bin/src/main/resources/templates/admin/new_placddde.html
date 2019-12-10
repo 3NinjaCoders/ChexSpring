@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/css/admin/main_style.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="top" th:replace="admin/fragments/top :: top"> </div>
+		<div class="left_bar" th:replace="admin/fragments/left_bar :: left_bar"></div>
+		<div class="content">
+		<!-- ******************************************************************* -->
+		Id: <p th:text="${id}">
+		<div th:switch="${level}">
+		 	<!-- ############################################# -->
+			<div th:case="'a'">
+				<form th:action="@{/admin/newplace/country}" method="post">
+					<select name="continent">
+
+						<option value="EU">Europa</option>
+						<option value="AN">Ameryka Pd</option>
+						<option value="AS">Ameryka Pł</option>
+						<option value="AZ">Azia</option>
+						<option value="AF">Afryka</option>
+						<option value="AU">Australia</option>
+						<option value="AA">Anatarktyda</option>
+					</select>
+					<button type="submit">Dodaj </button>
+				</form>
+			</div>
+			<!-- ############################################# -->
+			<div th:case="'b'">
+				<form th:action="@{/admin/newplace/toregion}" method="get">
+					<select name="country">
+						<option th:each="i : ${countries_list}" th:value="${i.id}" th:text="${i.name}">"${i.name}"</option>
+					</select><br>
+					Nazwa:<input type="text" name="new_country" value=""><br>
+					ID: <input type="text" name="id_country" value=""><br>
+						<input type="hidden" name="id" th:value="${id}">
+					<button type="submit">Dodaj</button> 
+				</form>
+			</div>
+			<!-- ############################################# -->
+			<div th:case="'c1'">
+				<form th:action="@{/admin/newplace/regioncont}">
+					<select name="country">
+						<option th:each="i : ${regions}" th:value="${i.id}" th:text="${i.name}">"${i.name}"</option>
+					</select>
+					Nazwa:<input type="text" name="new_country" value=""><br>
+					ID: <input type="text" name="id_country" value=""><br>
+					<input type="hidden" name="id" th:value="${id}">
+					<button type="submit">Dodaj</button> 
+				</form>
+			</div>
+			<!-- ############################################# -->
+			<div th:case="'d'">
+				<form th:action="@{/admin/newplace/toplace}">
+					<select name="country">
+						<option th:each="i : ${places}" th:value="${i.id}" th:text="${i.name}">"${i.name}"</option>
+					</select>
+					Nazwa:<input type="text" name="new_country" value=""><br>
+					ID: <input type="text" name="id_country" value=""><br>
+					<input type="hidden" name="id" th:value="${id}">
+					<button type="submit">Dodaj</button> 
+				</form>
+			</div>
+			<!-- ############################################# -->
+			<div th:case="'c2'">
+				<p th:text="${place.place_id}">
+				<p th:text="${place.name}">
+				
+				<form>
+					X: <input type="text" name="x"><br>
+					Y: <input type="text" name="y"><br>
+					Photo_url: <input type="text" name="photo_url"><br>
+					Opis <textarea name="description" rows="5" cols="50"></textarea><br>
+					punkty <input type="number" name="points"><br>
+					<select name="category"><br>
+						<option th:each="i : ${categories}" th:value="${category}">"${category}"</option>
+					</select>
+					<button typ="submit"> Dodaj</button>
+				</form>
+			</div>
+
+		</div>
+		
+
+		<!-- ******************************************************************* -->
+		</div>
+		<div class="footer" th:replace="admin/fragments/footer :: footer"> </div>
+	</div>
+</body>
+</html>

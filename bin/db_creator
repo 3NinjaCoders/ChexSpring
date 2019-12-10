@@ -1,0 +1,48 @@
+CREATE SCHEMA `ChexDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+
+USE `ChexDB`
+
+CREATE TABLE `ChexDB`.`user_auth` (
+  `username` VARCHAR(60) NOT NULL,
+  `password` VARCHAR(60) NOT NULL,
+  `user_id` INT NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  `active` INT NOT NULL,
+  PRIMARY KEY (`username`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC));
+
+  CREATE TABLE `ChexDB`.`users` (
+  `user_id` INT NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `public_name` VARCHAR(45) NOT NULL,
+  `sex` INT NOT NULL,
+  `date_of_registration` DATE NOT NULL,
+  `date_of_birth` DATE NULL,
+  `profil_photo` VARCHAR(150) NULL,
+  `city` VARCHAR(45) NULL,
+  `country` VARCHAR(45) NULL,
+  `ulevel` INT NULL,
+  `exp` INT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC));
+  
+CREATE TABLE `ChexDB`.`categories` (
+  `category` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`category`));
+
+CREATE TABLE `ChexDB`.`places` (
+  `place_id` VARCHAR(14) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `x` DOUBLE NOT NULL,
+  `y` DOUBLE NOT NULL,
+  `photo_url` VARCHAR(150) NULL,
+  `description` TEXT NULL,
+  `num_vote` INT NULL,
+  `num_positive` INT NULL,
+  `points` INT NULL,
+  `category` VARCHAR(45) NULL,
+  PRIMARY KEY (`place_id`),
+  UNIQUE INDEX `place_id_UNIQUE` (`place_id` ASC));
+
+  

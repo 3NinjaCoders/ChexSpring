@@ -54,7 +54,7 @@ public class MyFriendsController {
 			mp.setUser_id(u.getUserId());
 			mp.setPhoto(u.getProfil_photo());
 			mp.setPublic_name(u.getPublic_name());
-			mp.setPersonStatus(PersonStatus.IsFriend);
+			mp.setPersonStatus("IsFriend");
 			list.add(mp);
 		}
 		return list;		
@@ -68,7 +68,7 @@ public class MyFriendsController {
 			miniP.setUser_id(u.getUserId());
 			miniP.setPhoto(u.getProfil_photo());
 			miniP.setPublic_name(u.getPublic_name());
-			miniP.setPersonStatus(PersonStatus.Invited);
+			miniP.setPersonStatus("Invited");
 			inviteByPersonList.add(miniP);
 		}
 		return inviteByPersonList;

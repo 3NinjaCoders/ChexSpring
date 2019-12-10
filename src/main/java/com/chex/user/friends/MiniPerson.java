@@ -7,12 +7,12 @@ public class MiniPerson {
 	private Long user_id;
 	private String public_name;
 	private String photo;
-	private PersonStatus personStatus;
+	private String personStatus;
 	
 	public MiniPerson() {
 	}
 	
-	public MiniPerson(Long user_id, String public_name, String photo, PersonStatus personStatus) {
+	public MiniPerson(Long user_id, String public_name, String photo, String personStatus) {
 		this.user_id = user_id;
 		this.public_name = public_name;
 		this.photo = photo;
@@ -36,10 +36,10 @@ public class MiniPerson {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public PersonStatus getPersonStatus() {
+	public String getPersonStatus() {
 		return personStatus;
 	}
-	public void setPersonStatus(PersonStatus personStatus) {
+	public void setPersonStatus(String personStatus) {
 		this.personStatus = personStatus;
 	}
 	

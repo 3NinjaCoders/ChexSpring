@@ -3,13 +3,16 @@ package com.chex.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class MyFriends {
 	@Id
+	@Column(name = "user_id")
 	private Long user_id;
+	@Column(name = "user_friends_id")
 	private String userFriendsId;
 	
 	public MyFriends() {

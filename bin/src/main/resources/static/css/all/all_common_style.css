@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#ivalid_login_message{
+	background-color: red;
+}
+
+#logout_message{
+	background-color: green;
+}
+
+#info_message{
+	background-color: yellow;
+}

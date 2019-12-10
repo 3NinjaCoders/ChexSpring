@@ -11,7 +11,45 @@
 		<div class="left_bar" th:replace="user/fragments/left_bar :: left_bar"></div>
 		<div class="content">
 		<!-- ***************************************************************************** -->
-		show search
+		<table>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr th:each="s : ${seach_list}">
+				<td th:text="${s.public_name}"></td>
+				<td th:text="${s.photo}"></td>
+				<td th:switch="${s.personStatus}" >
+					<div th:case="'Unknown'">
+						<form th:action="/user/friends/sendInv" method="post">
+							<input type="hidden" name="id" th:value="${s.user_id}">
+							<button type="submit"> Dodaj</button>
+						</form>
+					</div>
+					<div th:case="'Invited'">
+						<form th:action="${/user/firiends/acceptInv}" method="post">
+							<input type="hidden" name="id" th:value="${s.user_id}">
+							<button type="submit"> Przyjmij</button>
+						</form>
+						<form th:action="${/user/firiends/rejectInv}" method="post">
+							<input type="hidden" name="id" th:value="${s.user_id}">
+							<button type="submit"> Odrzuć</button>
+						</form>
+					</div>
+					<div th:case="'IsInvited'">
+						<form th:action="${/user/firiends/deletetInv}" method="post">>
+							<input type="hidden" name="id" th:value="${s.user_id}">
+							<button type="submit"> Cofnij zaproszenie</button>
+						</form>
+					</div>
+					<div th:case="'IsFriend'">
+						<span>Znajomy</span>
+					</div>
+				</td>
+			</tr>
+		</table>
 		<!-- ***************************************************************************** -->
 		</div>
 		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>

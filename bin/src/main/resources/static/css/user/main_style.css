@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.container{
+	
+	width: 800px;
+	height: auto;
+	
+}
+
+.top{
+	background-color: #664c51;
+	width: 800px;
+	height: 30px;
+}
+
+.left_bar{
+	width: 200px;
+	background-color: #d9c697;
+	height: 500px;
+	float: left;
+	
+}
+.content{
+	width: 600px;
+	background-color: #e8dcc0;
+	height: 500px;
+	float: right;
+}
+
+.footer{
+	background-color: #6f6f6f;
+	width: 800px;
+	height: 30px;
+	clear: both;
+}

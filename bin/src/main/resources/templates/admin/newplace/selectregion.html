@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/css/admin/main_style.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="top" th:replace="admin/fragments/top :: top"> </div>
+		<div class="left_bar" th:replace="admin/fragments/left_bar :: left_bar"></div>
+		<div class="content">
+		<!-- ******************************************************************* -->
+		Id: <p th:text="${id}">
+			<form th:action="@{/admin/newplace/regionsController}" method="post">
+				<select name="place">
+					<option th:each="i : ${regions}" th:value="${i.id}" th:text="${i.name}">"${i.name}"</option>
+				</select><br>
+				Nazwa:<input type="text" name="new_place" value=""><br>
+				ID: <input type="text" name="id_place" value=""><br>
+					<input type="hidden" name="id" th:value="${id}">
+				<button type="submit">Dodaj</button> 
+			</form>
+		<!-- ******************************************************************* -->
+		</div>
+		<div class="footer" th:replace="admin/fragments/footer :: footer"> </div>
+	</div>
+</body>
+</html>
