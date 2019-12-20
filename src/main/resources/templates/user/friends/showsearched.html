@@ -23,26 +23,17 @@
 				<td th:text="${s.photo}"></td>
 				<td th:switch="${s.personStatus}" >
 					<div th:case="'Unknown'">
-						<form th:action="/user/friends/sendInv" method="post">
+						<form th:action="@{/user/friends/sendInv}" method="post">
 							<input type="hidden" name="id" th:value="${s.user_id}">
 							<button type="submit"> Dodaj</button>
 						</form>
 					</div>
 					<div th:case="'Invited'">
-						<form th:action="${/user/firiends/acceptInv}" method="post">
-							<input type="hidden" name="id" th:value="${s.user_id}">
-							<button type="submit"> Przyjmij</button>
-						</form>
-						<form th:action="${/user/firiends/rejectInv}" method="post">
-							<input type="hidden" name="id" th:value="${s.user_id}">
-							<button type="submit"> Odrzuć</button>
-						</form>
+					<a th:href="@{'/user/firiends/acceptInv/' + ${s.user_id}}">Przyjmij</a>
+					<a th:href="@{'/user/firiends/rejectInv/' + ${s.user_id}}">Odrzuć</a>
 					</div>
 					<div th:case="'IsInvited'">
-						<form th:action="${/user/firiends/deletetInv}" method="post">>
-							<input type="hidden" name="id" th:value="${s.user_id}">
-							<button type="submit"> Cofnij zaproszenie</button>
-						</form>
+						<a th:href="@{'/user/friends/deletetInv/' + ${s.user_id}}">Cofnij zaproszenie</a>
 					</div>
 					<div th:case="'IsFriend'">
 						<span>Znajomy</span>

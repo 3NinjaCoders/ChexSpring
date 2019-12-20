@@ -49,6 +49,7 @@ public class RegistrationController {
 		userDAO.save(user);
 		
 		MyFriends mf = new MyFriends(userA.getUserId(), "");
+		myFriendsDAO.save(mf);
 		
 		mv.addObject("info_message", message);
 		mv.setViewName("index");

@@ -15,7 +15,37 @@
 			<input type="text" name="search">
 			<button type="submit"> Dodaj</button>
 		</form>
-		show friend
+		
+
+		<table> 
+			<tr th:each="l : ${inviteByPersonList}" >
+				<td>
+					<div class="person">
+						<div class="photoa">
+							<span th:text="${l.photo}"></span>
+						</div>	
+						<div class="info">
+							<span th:text="${l.public_name}"></span>
+						</div>
+						<div>
+							<a th:href="@{'/user/friends/acceptInv/' + ${l.user_id}}">Akceptuj</a>
+							<a th:href="@{'/user/friends/rejectInv/' + ${l.user_id}}">Odrzuć</a>
+						</div>
+					</div>
+				</td>
+			
+			</tr>
+		</table>
+		
+		<table>
+			<tr th:each="f : ${miniListFriends}">
+				<td th:text="${f.photo}"></td>
+				<td th:text="${f.public_name}"></td>
+				<td>
+					<a th:href="@{'/user/friends/deletetFriend/' + ${f.user_id}}">Usuń</a>
+				</td>
+			</tr>
+		</table>
 		<!-- ***************************************************************************** -->
 		</div>
 		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>

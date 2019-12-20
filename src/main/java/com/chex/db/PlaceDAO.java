@@ -19,7 +19,7 @@ public interface PlaceDAO extends JpaRepository<Place, String> {
 	@Query(value = "FROM Place where place_id like :regio% and (category= 'city' or category='reg') ORDER BY name")
 	List<Place> uniqe_subreg(@Param ("regio") String regio);
 	
-	@Query(value = "FROM Place where place_id like :place% and (category= 'city' or category='reg') ORDER BY name")
+	@Query(value = "FROM Place where place_id like :place% and (category != 'city' and category !='reg') ORDER BY name")
 	List<Place> uniqe_place(@Param ("place") String place);
 	
 }

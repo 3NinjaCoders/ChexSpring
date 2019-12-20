@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,38 +33,42 @@ public class InvitationController {
 	@RequestMapping(value = "/user/friends/sendInv", method = RequestMethod.POST)
 	public String sendInvitation(@RequestParam("id") Long id, Principal principal) {
 		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
-		Invitation inv = new Invitation(myId, id);
+		Invitation inv = new Invitation(id,myId);
 		invitationDAO.save(inv);
-		return "user/friends/showfriends";
+		return "redirect:/user/friend";
 	}
 	
-	@RequestMapping(value = "/user/firiends/acceptInv")
-	public String acceptInvitation(@RequestParam("id") Long id, Principal principal) {
+	@GetMapping(value = "/user/friends/acceptInv/{id}")
+	public String acceptInvitation(@PathVariable("id") Long id, Principal principal) {
 		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
-		MyFriends myFriends = myFriendsDAO.findById(myId).orElse(null);
-		if(myFriends == null)
-			return "user/friends/showfriends";
-		myFriends.addFriendId(id);
-		myFriendsDAO.save(myFriends);
+		MyFriends me = myFriendsDAO.findById(myId).orElse(null);
+		MyFriends myfriend = myFriendsDAO.findById(id).orElse(null);
+		if(me == null || myfriend == null)
+			return "redirect:/user/friend";
+		me.addFriendId(id);
+		myfriend.addFriendId(myId);
+		myFriendsDAO.save(me);
+		myFriendsDAO.save(myfriend);	
 		
 		Invitation inv = invitationDAO.findByUserIdAndInviters(myId, id);
 		invitationDAO.delete(inv);
-		return "user/friends/showfriends";
+		return "redirect:/user/friend";
 	}
 	
-	@RequestMapping(value = "/user/firiends/rejectInv")
-	public String rejecttInvitation(@RequestParam("id") Long id, Principal principal) {
+	@GetMapping(value = "/user/friends/rejectInv/{id}")
+	public String rejecttInvitation(@PathVariable("id") Long id, Principal principal) {
 		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();		
 		Invitation inv = invitationDAO.findByUserIdAndInviters(myId, id);
 		invitationDAO.delete(inv);
-		return "user/friends/showfriends";
+		return "redirect:/user/friend";
 	}
 	
-	@RequestMapping(value = "/user/firiends/deletetInv")
-	public String deletetInvitation(@RequestParam("id") Long id, Principal principal) {
+	@GetMapping(value = "/user/friends/deletetInv/{id}")
+	public String deletetInvitation(@PathVariable("id") Long id, Principal principal) {
 		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();		
 		Invitation inv = invitationDAO.findByUserIdAndInviters(id, myId);
+		System.out.println(inv);
 		invitationDAO.delete(inv);
-		return "user/friends/showfriends";
+		return "redirect:/user/friend";
 	}
 }

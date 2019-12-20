@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/css/user/main_style.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="top" th:replace="user/fragments/top :: top"> </div>
+		<div class="left_bar" th:replace="user/fragments/left_bar :: left_bar"></div>
+		<div class="content">
+		<!-- ***************************************************************************** -->
+		
+		<table>
+			<tr th:each="c : ${lp}">
+				<td th:text="${c.name}">
+				</td>
+				<td>
+					<a th:href="@{'/user/addmyplace/subregio/' + ${c.place_id}}" th:text="${c.name}"></a>
+				</td>
+			</tr>
+		</table>
+
+		<!-- ***************************************************************************** -->
+		</div>
+		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>
+	</div>
+</body>
+</html>

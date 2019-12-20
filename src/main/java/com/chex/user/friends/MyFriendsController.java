@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.chex.db.InvitationDAO;
 import com.chex.db.MyFriendsDAO;
@@ -44,6 +45,18 @@ public class MyFriendsController {
 		model.addAttribute("miniListFriends", miniListFriends);
 		model.addAttribute("inviteByPersonList", inviteByPersonList);
 		return "user/friends/showfriends";
+	}
+	
+	@GetMapping(value = "/user/friends/deletetFriend/{id}")
+	public String deletetFriend(@PathVariable("id") Long id, Principal principal) {
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();	
+		MyFriends mf = myFriendsDAO.findById(myId).orElse(null);
+		
+		if(mf != null) {
+			mf.removeFriend(id);
+			myFriendsDAO.save(mf);
+		}
+		return "redirect:/user/friend";
 	}
 	
 	private List<MiniPerson> pereperMiniPersonListForFriends(List<User> myFriendsUsers){

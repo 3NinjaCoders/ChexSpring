@@ -46,7 +46,7 @@ public class MyFriends {
 	
 	public List<Long> toList(){
 		List<Long> list = new ArrayList<>();
-		if(userFriendsId == null)return list;
+		if(userFriendsId == null || userFriendsId.isBlank())return list;
 		String f_array[] = userFriendsId.split(":");
 		
 		for(String s : f_array) {
@@ -56,12 +56,27 @@ public class MyFriends {
 	}
 	
 	public void addFriendId(Long friendId) {
-		if(userFriendsId == null) {
+		if(userFriendsId == null || userFriendsId.isBlank()) {
 			userFriendsId = Long.toString(friendId);
 		}
 		else {
 			userFriendsId += ":" + Long.toString(friendId);
 		}
 		
+	}
+	
+	public void removeFriend(Long friendId) {
+		List<Long> list = this.toList();
+		if(!list.contains(friendId)) {
+			return;
+		}
+		String sfriendId;
+		
+		if(list.get(0).equals(friendId))
+			sfriendId = Long.toString(friendId);
+		else
+			sfriendId = ":" + Long.toString(friendId);
+		
+		this.userFriendsId = this.userFriendsId.replace(sfriendId, "");
 	}
 }

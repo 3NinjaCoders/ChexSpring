@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/css/user/main_style.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="top" th:replace="user/fragments/top :: top"> </div>
+		<div class="left_bar" th:replace="user/fragments/left_bar :: left_bar"></div>
+		<div class="content">
+		<!-- ***************************************************************************** -->
+		
+		fill
+		
+		<p th:text="${place.name}">
+		
+		<form th:action="@{/user/addmyplace/addtodb}" enctype="multipart/form-data" method="post">
+			<input type="hidden" name="id" th:value="${place.place_id}">
+			<input type="file" name="photos">
+			<label for="description">Opis</label>
+			<input type="text" name="description" id="description">
+			
+			<button type="submit">Dodaj</button>
+		</form>
+
+		<!-- ***************************************************************************** -->
+		</div>
+		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>
+	</div>
+</body>
+</html>

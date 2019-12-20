@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all" href="/css/user/main_style.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="top" th:replace="user/fragments/top :: top"> </div>
+		<div class="left_bar" th:replace="user/fragments/left_bar :: left_bar"></div>
+		<div class="content">
+		<!-- ***************************************************************************** -->
+		
+		<a th:href="@{/user/addmyplace/country/EU}">Europa</a>
+		<a th:href="@{/user/addmyplace}">Ameryka Pd</a>
+		<a th:href="@{/user/addmyplace}">Ameryka Pł</a>
+		<a th:href="@{/user/addmyplace}">Azia</a>
+		<a th:href="@{/user/addmyplace}">Afryka</a>
+		<a th:href="@{/user/addmyplace}">Australia</a>
+		<a th:href="@{/user/addmyplace}">Anatarktyda</a>
+
+		<!-- ***************************************************************************** -->
+		</div>
+		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>
+	</div>
+</body>
+</html>
