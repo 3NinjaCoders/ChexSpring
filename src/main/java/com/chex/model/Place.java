@@ -1,14 +1,20 @@
 package com.chex.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name="places")
 public class Place {
 
 	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String place_id;
 	private String name;
 	private double x;

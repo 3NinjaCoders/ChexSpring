@@ -20,18 +20,22 @@ public class DbInit implements CommandLineRunner {
 	private UserAuthRepository userRepository;
 	private PasswordEncoder passwordEndcoder;
 	private UserDAO userDAO;
-	@Autowired
 	private InvitationDAO invitationDAO;
-	@Autowired
 	private MyFriendsDAO myFriendDAO;
-	@Autowired
 	private PlaceDAO placeDAO;
 	
-	public DbInit(UserAuthRepository userRepository, PasswordEncoder passwordEndcoder, UserDAO userDAO) {
+	
+	public DbInit(UserAuthRepository userRepository, PasswordEncoder passwordEndcoder, UserDAO userDAO,
+			InvitationDAO invitationDAO, MyFriendsDAO myFriendDAO, PlaceDAO placeDAO) {
+		super();
 		this.userRepository = userRepository;
 		this.passwordEndcoder = passwordEndcoder;
 		this.userDAO = userDAO;
+		this.invitationDAO = invitationDAO;
+		this.myFriendDAO = myFriendDAO;
+		this.placeDAO = placeDAO;
 	}
+
 
 	@Override
 	public void run(String... args) throws Exception {
