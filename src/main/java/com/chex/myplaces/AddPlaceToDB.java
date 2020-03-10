@@ -3,6 +3,7 @@ package com.chex.myplaces;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.chex.db.AlbumDAO;
 import com.chex.db.PlaceDAO;
 import com.chex.db.UserAuthRepository;
+import com.chex.db.VisitedPlaceDAO;
 import com.chex.model.Place;
+import com.chex.model.VisitedPlace;
 
 @Controller
 public class AddPlaceToDB {
@@ -28,6 +31,8 @@ public class AddPlaceToDB {
 	private UserAuthRepository userAuthDAO;
 	@Autowired
 	private AlbumDAO albumDAO;
+	@Autowired
+	private VisitedPlaceDAO visitedPlaceDAO;
 
 	@PostMapping(value = "/user/addmyplace/addtodb")
 	public String addnewplacetodb(@RequestParam("description") String description,
@@ -37,21 +42,28 @@ public class AddPlaceToDB {
 			) {
 		
 		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
-		uploadPhotos(uploadingFiles, myId);
-		
-		
+		Long albumId = uploadPhotos(uploadingFiles, myId);
 		Place place = placeDAO.findById(id).orElse(null);
 		
 		if(place == null) {
 			//TODO
 		}
 		
+		VisitedPlace vp = new VisitedPlace();
+		vp.setAlbumId(albumId);
+		vp.setUserId(myId);
+		vp.setPlacename(place.getName());
+		vp.setPlaceId(place.getPlace_id());
+		vp.setDescription(description);
+		vp.setLikes(0);
+		////vp.setVisitedDate(xxx); //TODO
+		visitedPlaceDAO.save(vp);
 		
 		return "redirect:/user/addmyplace";
-	}
+	}	
 	
-	private void uploadPhotos(MultipartFile[] photos, Long userId) {
-		if(photos[0].isEmpty()) return;
+	private Long uploadPhotos(MultipartFile[] photos, Long userId) {
+		if(photos[0].isEmpty()) return -1l;
 		Path currentPath = Paths.get(".");
 		Path absolutePath = currentPath.toAbsolutePath();
 		
@@ -73,7 +85,7 @@ public class AddPlaceToDB {
 		String orginalName = StringUtils.cleanPath(photos[0].getOriginalFilename());
 		System.out.println(orginalName);
 		
-
+		return albumId;
 //		try {
 //			Files.copy(photo.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 //		} catch (IOException e) {

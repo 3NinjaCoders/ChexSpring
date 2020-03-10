@@ -13,7 +13,18 @@
 		<!-- ***************************************************************************** -->
 		<a th:href="@{/user/addmyplace}">dodaj</a>
 		
-
+		<table>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr th:each="i : ${visitedList}">
+				<td><a th:href="@{'/user/place/profil/' + ${i.pk}}" th:text="${i.placename}"></a></td>
+				<td th:text="i.description"></td>
+			</tr>
+			
+		</table>
+	
 		<!-- ***************************************************************************** -->
 		</div>
 		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>

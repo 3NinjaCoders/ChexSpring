@@ -9,19 +9,10 @@
 	<div class="container">
 		<div class="top" th:replace="user/fragments/top :: top"> </div>
 		<div class="left_bar" th:replace="user/fragments/left_bar :: left_bar"></div>
-		<div class="content">
-		
-		<table>
-			<tr>
-				<td></td>
-				<td></td>
-			<tr th:each="i : ${vp_list}">
-				<td><a th:href="@{'/user/place/profil/' + ${i.pk}}"  th:text="i.placename"></a></td>
-				<td th:text="i.description"></td>
-			</tr>
-			
-		</table>
-		
+		<div class="content"> 
+			<p th:text="${vp.placename}"></p>
+			<p th:text="${vp.description}"></p>
+			<p th:text="${vp.likes}"></p>
 		</div>
 		<div class="footer" th:replace="user/fragments/footer :: footer"> </div>
 	</div>

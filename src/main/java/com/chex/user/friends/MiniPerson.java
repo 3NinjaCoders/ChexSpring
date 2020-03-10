@@ -1,7 +1,5 @@
 package com.chex.user.friends;
 
-import com.chex.enums.PersonStatus;
-
 public class MiniPerson {
 	
 	private Long user_id;

@@ -14,6 +14,7 @@ import com.chex.model.MyFriends;
 import com.chex.model.Place;
 import com.chex.model.User;
 import com.chex.model.UserAuth;
+import com.chex.model.VisitedPlace;
 
 @Service
 public class DbInit implements CommandLineRunner {
@@ -26,6 +27,8 @@ public class DbInit implements CommandLineRunner {
 	private MyFriendsDAO myFriendDAO;
 	@Autowired
 	private PlaceDAO placeDAO;
+	@Autowired
+	private VisitedPlaceDAO visitedplaceDAO;
 	
 	public DbInit(UserAuthRepository userRepository, PasswordEncoder passwordEndcoder, UserDAO userDAO) {
 		this.userRepository = userRepository;
@@ -40,6 +43,7 @@ public class DbInit implements CommandLineRunner {
 		this.invitationDAO.deleteAll();
 		this.myFriendDAO.deleteAll();
 		this.placeDAO.deleteAll();
+		this.visitedplaceDAO.deleteAll();
 		
 		Place cont1 = new Place("EU000000000000", "Europa", 4, 5, "", "Europa",0,	0, 10, "continent");
 		Place cont2 = new Place("AN000000000000", "Ameryka Pd", 4, 5, "", "Ameryka Pd",0,	0, 10, "continent");
@@ -115,6 +119,12 @@ public class DbInit implements CommandLineRunner {
 		
 		this.userDAO.saveAll(Arrays.asList(uu1, uu2, uu3, uu4));
 		
+		VisitedPlace vp1 = new VisitedPlace();
+		vp1.setUserId(uu1.getUserId());
+		vp1.setPlacename("Rynek");
+		vp1.setPlaceId(p1.getPlace_id());
+		vp1.setDescription("Bla bla");
+		this.visitedplaceDAO.save(vp1);
 		
 	}
 }

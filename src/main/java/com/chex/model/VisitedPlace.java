@@ -14,7 +14,8 @@ public class VisitedPlace {
 	private Long pk;
 	private Long userId;
 	private Long albumId;
-	private Long placeId;
+	private String placename;
+	private String placeId;
 	private String description;
 	private int likes;
 	private Date visitedDate;
@@ -22,11 +23,12 @@ public class VisitedPlace {
 	public VisitedPlace() {
 	}
 
-	public VisitedPlace(Long pk, Long userId, Long albumId, Long placeId, String description, int likes,
-			Date visitedDate) {
-		this.pk = pk;
+	public VisitedPlace(Long userId, Long albumId, String placename, String placeId, String description,
+			int likes, Date visitedDate) {
+		super();
 		this.userId = userId;
 		this.albumId = albumId;
+		this.placename = placename;
 		this.placeId = placeId;
 		this.description = description;
 		this.likes = likes;
@@ -57,11 +59,19 @@ public class VisitedPlace {
 		this.albumId = albumId;
 	}
 
-	public Long getPlaceId() {
+	public String getPlacename() {
+		return placename;
+	}
+
+	public void setPlacename(String placename) {
+		this.placename = placename;
+	}
+
+	public String getPlaceId() {
 		return placeId;
 	}
 
-	public void setPlaceId(Long placeId) {
+	public void setPlaceId(String placeId) {
 		this.placeId = placeId;
 	}
 
@@ -91,7 +101,8 @@ public class VisitedPlace {
 
 	@Override
 	public String toString() {
-		return "VisitedPlace [pk=" + pk + ", userId=" + userId + ", albumId=" + albumId + ", placeId=" + placeId
-				+ ", description=" + description + ", likes=" + likes + ", visitedDate=" + visitedDate + "]";
+		return "VisitedPlace [pk=" + pk + ", userId=" + userId + ", albumId=" + albumId + ", placename=" + placename
+				+ ", placeId=" + placeId + ", description=" + description + ", likes=" + likes + ", visitedDate="
+				+ visitedDate + "]";
 	}
 }
