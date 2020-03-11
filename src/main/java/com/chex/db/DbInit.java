@@ -78,55 +78,55 @@ public class DbInit implements CommandLineRunner {
 		this.userRepository.saveAll(users);
 		
 		User uu1 = new User();
-		uu1.setUserId(ua1.getUserId());
-		uu1.setFirst_name("Piotr");
-		uu1.setLast_name("Konicki");
-		uu1.setPublic_name("Piotr Konicki");
+		uu1.setUserid(ua1.getUserid());
+		uu1.setFirstname("Piotr");
+		uu1.setLastname("Konicki");
+		uu1.setPublicname("Piotr Konicki");
 		uu1.setSex(0);
-		uu1.setDate_of_registration(new Date(System.currentTimeMillis()));
+		uu1.setDateofregistration(new Date(System.currentTimeMillis()));
 		
 		User uu2 = new User();
-		uu2.setUserId(ua2.getUserId());
-		uu2.setFirst_name("Adam");
-		uu2.setLast_name("Nowak");
+		uu2.setUserid(ua2.getUserid());
+		uu2.setFirstname("Adam");
+		uu2.setLastname("Nowak");
 		uu2.setSex(0);
-		uu2.setPublic_name(uu2.getFirst_name() + " " + uu2.getLast_name());
-		uu2.setDate_of_registration(new Date(System.currentTimeMillis()));
+		uu2.setPublicname(uu2.getFirstname() + " " + uu2.getLastname());
+		uu2.setDateofregistration(new Date(System.currentTimeMillis()));
 		
 		User uu3 = new User();
-		uu3.setUserId(ua3.getUserId());
-		uu3.setFirst_name("Zuzanna");
-		uu3.setLast_name("Harnas");
+		uu3.setUserid(ua3.getUserid());
+		uu3.setFirstname("Zuzanna");
+		uu3.setLastname("Harnas");
 		uu3.setSex(1);
-		uu3.setPublic_name(uu3.getFirst_name() + " " + uu3.getLast_name());
-		uu3.setDate_of_registration(new Date(System.currentTimeMillis()));
+		uu3.setPublicname(uu3.getFirstname() + " " + uu3.getLastname());
+		uu3.setDateofregistration(new Date(System.currentTimeMillis()));
 		
 		User uu4 = new User();
-		uu4.setUserId(ua4.getUserId());
-		uu4.setFirst_name("Katarzyna");
-		uu4.setLast_name("Shmit");
+		uu4.setUserid(ua4.getUserid());
+		uu4.setFirstname("Katarzyna");
+		uu4.setLastname("Shmit");
 		uu4.setSex(1);
-		uu4.setPublic_name(uu4.getFirst_name() + " " + uu4.getLast_name());
-		uu4.setDate_of_registration(new Date(System.currentTimeMillis()));
+		uu4.setPublicname(uu4.getFirstname() + " " + uu4.getLastname());
+		uu4.setDateofregistration(new Date(System.currentTimeMillis()));
 		
-		Invitation i1 = new Invitation(ua1.getUserId(), ua3.getUserId());
-		Invitation i2 = new Invitation(ua1.getUserId(), ua2.getUserId());
+		Invitation i1 = new Invitation(ua1.getUserid(), ua3.getUserid());
+		Invitation i2 = new Invitation(ua1.getUserid(), ua2.getUserid());
 		this.invitationDAO.saveAll(Arrays.asList(i1, i2));
 		
-		String fid4 = Long.toString(ua4.getUserId());
-		String fid1 = Long.toString(ua1.getUserId());
-		MyFriends mf1 = new MyFriends(uu1.getUserId(), fid4);
-		MyFriends mf2 = new MyFriends(uu2.getUserId(), "");
-		MyFriends mf3 = new MyFriends(uu3.getUserId(), "");
-		MyFriends mf4 = new MyFriends(uu4.getUserId(), fid1);
+		String fid4 = Long.toString(ua4.getUserid());
+		String fid1 = Long.toString(ua1.getUserid());
+		MyFriends mf1 = new MyFriends(uu1.getUserid(), fid4);
+		MyFriends mf2 = new MyFriends(uu2.getUserid(), "");
+		MyFriends mf3 = new MyFriends(uu3.getUserid(), "");
+		MyFriends mf4 = new MyFriends(uu4.getUserid(), fid1);
 		this.myFriendDAO.saveAll(Arrays.asList(mf1, mf2, mf3, mf4));
 		
 		this.userDAO.saveAll(Arrays.asList(uu1, uu2, uu3, uu4));
 		
 		VisitedPlace vp1 = new VisitedPlace();
-		vp1.setUserId(uu1.getUserId());
+		vp1.setUserid(uu1.getUserid());
 		vp1.setPlacename("Rynek");
-		vp1.setPlaceId(p1.getPlace_id());
+		vp1.setPlaceid(p1.getPlaceid());
 		vp1.setDescription("Bla bla");
 		this.visitedplaceDAO.save(vp1);
 		

@@ -32,7 +32,7 @@ public class SearchController {
 	@GetMapping(value = "/user/searchpeople")
 	public String searchPeople(@RequestParam("search") String search, Principal principal, Model model) {
 		List<User> foundUsers = userDAO.findAllContainPublicName(search);
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();
 		List<MiniPerson> mini_list = getSearchedMiniPersonList(foundUsers, myId);
 		
 		System.out.println(mini_list);
@@ -45,19 +45,19 @@ public class SearchController {
 
 		for(User u : foundUsers) {
 			MiniPerson pm = new MiniPerson();
-			pm.setUser_id(u.getUserId());
-			pm.setPhoto(u.getProfil_photo());
-			pm.setPublic_name(u.getPublic_name());
+			pm.setUserid(u.getUserid());
+			pm.setPhoto(u.getProfilphoto());
+			pm.setPublicname(u.getPublicname());
 			
-			if(invitationDAO.isUserIdAndInviters(myId, u.getUserId())){
-				System.out.println(invitationDAO.isUserIdAndInviters(myId, u.getUserId()));
+			if(invitationDAO.isUserIdAndInviters(myId, u.getUserid())){
+				System.out.println(invitationDAO.isUserIdAndInviters(myId, u.getUserid()));
 				pm.setPersonStatus("Invited");
 			}
-			else if(invitationDAO.isUserIdAndInviters(u.getUserId() , myId)){
-				System.out.println(invitationDAO.isUserIdAndInviters(u.getUserId() , myId));
+			else if(invitationDAO.isUserIdAndInviters(u.getUserid() , myId)){
+				System.out.println(invitationDAO.isUserIdAndInviters(u.getUserid() , myId));
 				pm.setPersonStatus("IsInvited");
 			}
-			else if(myFriendsDAO.isMyFriend(myId, Long.toString(u.getUserId()))) {
+			else if(myFriendsDAO.isMyFriend(myId, Long.toString(u.getUserid()))) {
 				pm.setPersonStatus("IsFriend");
 			}else {
 				pm.setPersonStatus("Unknown");

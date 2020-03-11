@@ -45,10 +45,10 @@ public class RegistrationController {
 		userAutreop.save(userA);
 		
 		User user = buildUser(regModel);
-		user.setUserId(userA.getUserId());
+		user.setUserid(userA.getUserid());
 		userDAO.save(user);
 		
-		MyFriends mf = new MyFriends(userA.getUserId(), "");
+		MyFriends mf = new MyFriends(userA.getUserid(), "");
 		myFriendsDAO.save(mf);
 		
 		mv.addObject("info_message", message);
@@ -58,9 +58,9 @@ public class RegistrationController {
 	
 	private User buildUser(RegistrationModel regModel) {
 		User user = new User();
-		user.setFirst_name(regModel.getFirstName());
-		user.setLast_name(regModel.getLastName());
-		user.setPublic_name(user.getFirst_name() + " " + user.getLast_name());
+		user.setFirstname(regModel.getFirstName());
+		user.setLastname(regModel.getLastName());
+		user.setPublicname(user.getFirstname() + " " + user.getLastname());
 		int isex = 0;
 		if(regModel.getSex().equals("F"))
 			isex = 1;
@@ -68,11 +68,11 @@ public class RegistrationController {
 		long milis = System.currentTimeMillis();
 		Date date_of_reg = new Date(milis);
 		
-		user.setDate_of_registration(date_of_reg);
+		user.setDateofregistration(date_of_reg);
 		
 		Date date_of_birth = new Date(0);
-		user.setDate_of_birth(date_of_birth);
-		user.setProfil_photo("");
+		user.setDateofbirth(date_of_birth);
+		user.setProfilphoto("");
 		user.setCity("");
 		user.setCountry("");
 		user.setExp(0);

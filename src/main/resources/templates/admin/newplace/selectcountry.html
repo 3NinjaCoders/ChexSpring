@@ -16,8 +16,8 @@
 				<select name="place">
 					<option th:each="i : ${countries}" th:value="${i.id}" th:text="${i.name}">"${i.name}"</option>
 				</select><br>
-				Nazwa:<input type="text" name="new_place" value=""><br>
-				ID: <input type="text" name="id_place" value=""><br>
+				Nazwa:<input type="text" name="newplace" value=""><br>
+				ID: <input type="text" name="idplace" value=""><br>
 					<input type="hidden" name="id" th:value="${id}">
 				<button type="submit">Dodaj</button> 
 			</form>

@@ -41,19 +41,19 @@ public class AddPlaceToDB {
 			Principal principal
 			) {
 		
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();
 		Long albumId = uploadPhotos(uploadingFiles, myId);
-		Place place = placeDAO.findById(id).orElse(null);
+		Place place = placeDAO.findByPlaceid(id);
 		
 		if(place == null) {
 			//TODO
 		}
 		
 		VisitedPlace vp = new VisitedPlace();
-		vp.setAlbumId(albumId);
-		vp.setUserId(myId);
+		vp.setAlbumid(albumId);
+		vp.setUserid(myId);
 		vp.setPlacename(place.getName());
-		vp.setPlaceId(place.getPlace_id());
+		vp.setPlaceid(place.getPlaceid());
 		vp.setDescription(description);
 		vp.setLikes(0);
 		////vp.setVisitedDate(xxx); //TODO

@@ -8,103 +8,144 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
 public class User {
 	
 	@Id
-	@Column(name = "user_id")
-	private long userId;
-	private String first_name;
-	private String last_name;
-	private String public_name;
+	private long userid;
+	private String firstname;
+	private String lastname;
+	private String publicname;
 	private int sex;
-	private Date date_of_registration;
-	private Date date_of_birth;
-	private String profil_photo;
+	private Date dateofregistration;
+	private Date dateofbirth;
+	private String profilphoto;
 	private String city;
 	private String country;
 	private int ulevel;
 	private int exp;
 	
-	public long getUserId() {
-		return userId;
+	
+	public User() {
 	}
-	public void setUserId(long user_id) {
-		this.userId = user_id;
+
+	public User(long userid, String firstname, String lastname, String publicname, int sex, Date dateofregistration,
+			Date dateofbirth, String profilphoto, String city, String country, int ulevel, int exp) {
+		this.userid = userid;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.publicname = publicname;
+		this.sex = sex;
+		this.dateofregistration = dateofregistration;
+		this.dateofbirth = dateofbirth;
+		this.profilphoto = profilphoto;
+		this.city = city;
+		this.country = country;
+		this.ulevel = ulevel;
+		this.exp = exp;
 	}
-	public String getFirst_name() {
-		return first_name;
+
+	public long getUserid() {
+		return userid;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+
+	public void setUserid(long userid) {
+		this.userid = userid;
 	}
-	public String getLast_name() {
-		return last_name;
+
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
-	public String getPublic_name() {
-		return public_name;
+
+	public String getLastname() {
+		return lastname;
 	}
-	public void setPublic_name(String public_name) {
-		this.public_name = public_name;
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
+
+	public String getPublicname() {
+		return publicname;
+	}
+
+	public void setPublicname(String publicname) {
+		this.publicname = publicname;
+	}
+
 	public int getSex() {
 		return sex;
 	}
+
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public Date getDate_of_registration() {
-		return date_of_registration;
+
+	public Date getDateofregistration() {
+		return dateofregistration;
 	}
-	public void setDate_of_registration(Date date_of_registration) {
-		this.date_of_registration = date_of_registration;
+
+	public void setDateofregistration(Date dateofregistration) {
+		this.dateofregistration = dateofregistration;
 	}
-	public Date getDate_of_birth() {
-		return date_of_birth;
+
+	public Date getDateofbirth() {
+		return dateofbirth;
 	}
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
+
+	public void setDateofbirth(Date dateofbirth) {
+		this.dateofbirth = dateofbirth;
 	}
-	public String getProfil_photo() {
-		return profil_photo;
+
+	public String getProfilphoto() {
+		return profilphoto;
 	}
-	public void setProfil_photo(String profil_photo) {
-		this.profil_photo = profil_photo;
+
+	public void setProfilphoto(String profilphoto) {
+		this.profilphoto = profilphoto;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getCountry() {
 		return country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
 	public int getUlevel() {
 		return ulevel;
 	}
+
 	public void setUlevel(int ulevel) {
 		this.ulevel = ulevel;
 	}
+
 	public int getExp() {
 		return exp;
 	}
+
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
+
 	@Override
 	public String toString() {
-		return "User [user_id=" + userId + ", first_name=" + first_name + ", last_name=" + last_name + ", public_name="
-				+ public_name + ", sex=" + sex + ", date_of_registration=" + date_of_registration + ", date_of_birth="
-				+ date_of_birth + ", profil_photo=" + profil_photo + ", city=" + city + ", country=" + country
-				+ ", ulevel=" + ulevel + ", exp=" + exp + "]";
+		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", publicname="
+				+ publicname + ", sex=" + sex + ", dateofregistration=" + dateofregistration + ", dateofbirth="
+				+ dateofbirth + ", profilphoto=" + profilphoto + ", city=" + city + ", country=" + country + ", ulevel="
+				+ ulevel + ", exp=" + exp + "]";
 	}
-	
-	
+
 }

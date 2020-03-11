@@ -61,14 +61,14 @@ public class AddPlaceController {
 	}
 	
 	@GetMapping(value = "/user/addmyplace/addplace/{id}")
-	public String addmyplaceadd(@PathVariable("id") String id, Model model) {
-		Place place = placeDAO.findById(id).orElse(null);
+	public String addmyplaceadd(@PathVariable("id") String placeid, Model model) {
+		Place place = placeDAO.findByPlaceid(placeid);
 		if(place == null) {
 			//TODO
 			return "user/places";
 		}
 		model.addAttribute("place", place);
-		System.out.println("add " + id);
+		System.out.println("add " + placeid);
 
 		return "user/places/addmyplacefill";
 	}

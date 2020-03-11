@@ -8,18 +8,21 @@ import org.springframework.data.repository.query.Param;
 
 import com.chex.model.Place;
 
-public interface PlaceDAO extends JpaRepository<Place, String> {
+public interface PlaceDAO extends JpaRepository<Place, Long> {
 	
-	@Query(value = "FROM Place where place_id like :contintent% and category = 'country' ORDER BY name")
+	Place findByPlaceid(String placeid);
+	boolean existsByPlaceid(String placeid);
+	
+	@Query(value = "FROM Place where placeid like :contintent% and category = 'country' ORDER BY name")
 	List<Place> uniqe_countries(@Param("contintent") String continent);
 	
-	@Query(value = "FROM Place where place_id like :country% and category = 'region' ORDER BY name")
+	@Query(value = "FROM Place where placeid like :country% and category = 'region' ORDER BY name")
 	List<Place> uniqe_regions(@Param ("country") String country);
 	
-	@Query(value = "FROM Place where place_id like :regio% and (category= 'city' or category='reg') ORDER BY name")
+	@Query(value = "FROM Place where placeid like :regio% and (category= 'city' or category='reg') ORDER BY name")
 	List<Place> uniqe_subreg(@Param ("regio") String regio);
 	
-	@Query(value = "FROM Place where place_id like :place% and (category != 'city' and category !='reg') ORDER BY name")
+	@Query(value = "FROM Place where placeid like :place% and (category != 'city' and category !='reg') ORDER BY name")
 	List<Place> uniqe_place(@Param ("place") String place);
 	
 }

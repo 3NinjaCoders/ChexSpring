@@ -10,16 +10,16 @@ public class Album {
 	@Id
 	@GeneratedValue
 	private Long pk;
-	private Long userId;
-	private Long albumId;
+	private Long userid;
+	private Long albumid;
 	private String photoPath;
 	
 	public Album() {
 	}
-	public Album(Long pk, Long userId, Long albumId, String photoPath) {
+	public Album(Long pk, Long userid, Long albumid, String photoPath) {
 		this.pk = pk;
-		this.userId = userId;
-		this.albumId = albumId;
+		this.userid = userid;
+		this.albumid = albumid;
 		this.photoPath = photoPath;
 	}
 	public Long getPk() {
@@ -28,17 +28,17 @@ public class Album {
 	public void setPk(Long pk) {
 		this.pk = pk;
 	}
-	public Long getUserId() {
-		return userId;
+	public Long getUserid() {
+		return userid;
 	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
-	public Long getAlbumId() {
-		return albumId;
+	public Long getAlbumid() {
+		return albumid;
 	}
-	public void setAlbumId(Long albumId) {
-		this.albumId = albumId;
+	public void setAlbumid(Long albumid) {
+		this.albumid = albumid;
 	}
 	public String getPhotoPath() {
 		return photoPath;
@@ -48,6 +48,6 @@ public class Album {
 	}
 	@Override
 	public String toString() {
-		return "Album [pk=" + pk + ", userId=" + userId + ", albumId=" + albumId + ", photoPath=" + photoPath + "]";
-	}	
+		return "Album [pk=" + pk + ", userid=" + userid + ", albumid=" + albumid + ", photoPath=" + photoPath + "]";
+	}
 }

@@ -2,48 +2,56 @@ package com.chex.user.friends;
 
 public class MiniPerson {
 	
-	private Long user_id;
-	private String public_name;
+	private Long userid;
+	private String publicname;
 	private String photo;
 	private String personStatus;
 	
 	public MiniPerson() {
 	}
 	
-	public MiniPerson(Long user_id, String public_name, String photo, String personStatus) {
-		this.user_id = user_id;
-		this.public_name = public_name;
+	public MiniPerson(Long userid, String publicname, String photo, String personStatus) {
+		this.userid = userid;
+		this.publicname = publicname;
 		this.photo = photo;
 		this.personStatus = personStatus;
 	}
-	public Long getUser_id() {
-		return user_id;
+
+	public Long getUserid() {
+		return userid;
 	}
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
-	public String getPublic_name() {
-		return public_name;
+
+	public String getPublicname() {
+		return publicname;
 	}
-	public void setPublic_name(String public_name) {
-		this.public_name = public_name;
+
+	public void setPublicname(String publicname) {
+		this.publicname = publicname;
 	}
+
 	public String getPhoto() {
 		return photo;
 	}
+
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+
 	public String getPersonStatus() {
 		return personStatus;
 	}
+
 	public void setPersonStatus(String personStatus) {
 		this.personStatus = personStatus;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "MiniPerson [user_id=" + user_id + ", public_name=" + public_name + ", photo=" + photo
-				+ ", personStatus=" + personStatus + "]";
+		return "MiniPerson [userid=" + userid + ", publicname=" + publicname + ", photo=" + photo + ", personStatus="
+				+ personStatus + "]";
 	}
 }

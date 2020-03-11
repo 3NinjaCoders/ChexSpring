@@ -33,7 +33,7 @@ public class MyFriendsController {
 	
 	@GetMapping("/user/friend")
 	public String userfriend(Principal principal, Model model) {
-		long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
+		long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();
 		List<User> invitePerson = getUserList(myId);
 		List<MiniPerson> inviteByPersonList = prepareMiniPerosnList(invitePerson);
 		
@@ -49,7 +49,7 @@ public class MyFriendsController {
 	
 	@GetMapping(value = "/user/friends/deletetFriend/{id}")
 	public String deletetFriend(@PathVariable("id") Long id, Principal principal) {
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();	
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();	
 		MyFriends mf = myFriendsDAO.findById(myId).orElse(null);
 		
 		if(mf != null) {
@@ -64,9 +64,9 @@ public class MyFriendsController {
 		List<MiniPerson> list = new ArrayList<>();
 		for(User u : myFriendsUsers) {
 			MiniPerson mp = new MiniPerson();
-			mp.setUser_id(u.getUserId());
-			mp.setPhoto(u.getProfil_photo());
-			mp.setPublic_name(u.getPublic_name());
+			mp.setUserid(u.getUserid());
+			mp.setPhoto(u.getProfilphoto());
+			mp.setPublicname(u.getPublicname());
 			mp.setPersonStatus("IsFriend");
 			list.add(mp);
 		}
@@ -78,9 +78,9 @@ public class MyFriendsController {
 		List<MiniPerson> inviteByPersonList = new ArrayList<>();
 		for(User u : invitePerson) {
 			MiniPerson miniP = new MiniPerson();
-			miniP.setUser_id(u.getUserId());
-			miniP.setPhoto(u.getProfil_photo());
-			miniP.setPublic_name(u.getPublic_name());
+			miniP.setUserid(u.getUserid());
+			miniP.setPhoto(u.getProfilphoto());
+			miniP.setPublicname(u.getPublicname());
 			miniP.setPersonStatus("Invited");
 			inviteByPersonList.add(miniP);
 		}
@@ -88,7 +88,7 @@ public class MyFriendsController {
 	}
 	
 	private List<User> getUserList(Long myId) {
-		List<Invitation> invitation = invitationDAO.findByUserId(myId);
+		List<Invitation> invitation = invitationDAO.findByUserid(myId);
 		List<Long> id_list = new ArrayList<>();
 		for(Invitation i : invitation)
 			id_list.add(i.getInviters());

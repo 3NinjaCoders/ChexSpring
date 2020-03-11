@@ -1,54 +1,57 @@
 package com.chex.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Max;
-
-import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name="places")
 public class Place {
 
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private String place_id;
+	@GeneratedValue
+	private Long id;
+	private String placeid;
 	private String name;
 	private double x;
 	private double y;
 	private String photo_url;
 	private String description;
-	private int num_vote;
-	private int num_positive;
+	private int numvote;
+	private int numpositive;
 	private int points;
 	private String category;
 	
 	public Place() {
 	}
 
-	public Place(String place_id, String name, double x, double y, String photo_url, String description, int num_vote,
-			int num_positive, int points, String category) {
-		this.place_id = place_id;
+	public Place( String placeid, String name, double x, double y, String photo_url, String description,
+			int numvote, int numpositive, int points, String category) {
+		this.placeid = placeid;
 		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.photo_url = photo_url;
 		this.description = description;
-		this.num_vote = num_vote;
-		this.num_positive = num_positive;
+		this.numvote = numvote;
+		this.numpositive = numpositive;
 		this.points = points;
 		this.category = category;
 	}
 
-	public String getPlace_id() {
-		return place_id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPlace_id(String place_id) {
-		this.place_id = place_id;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getPlaceid() {
+		return placeid;
+	}
+
+	public void setPlaceid(String placeid) {
+		this.placeid = placeid;
 	}
 
 	public String getName() {
@@ -91,20 +94,20 @@ public class Place {
 		this.description = description;
 	}
 
-	public int getNum_vote() {
-		return num_vote;
+	public int getNumvote() {
+		return numvote;
 	}
 
-	public void setNum_vote(int num_vote) {
-		this.num_vote = num_vote;
+	public void setNumvote(int numvote) {
+		this.numvote = numvote;
 	}
 
-	public int getNum_positive() {
-		return num_positive;
+	public int getNumpositive() {
+		return numpositive;
 	}
 
-	public void setNum_positive(int num_positive) {
-		this.num_positive = num_positive;
+	public void setNumpositive(int numpositive) {
+		this.numpositive = numpositive;
 	}
 
 	public int getPoints() {
@@ -125,8 +128,8 @@ public class Place {
 
 	@Override
 	public String toString() {
-		return "Place [place_id=" + place_id + ", name=" + name + ", x=" + x + ", y=" + y + ", photo_url=" + photo_url
-				+ ", description=" + description + ", num_vote=" + num_vote + ", num_positive=" + num_positive
+		return "Place [id=" + id + ", placeid=" + placeid + ", name=" + name + ", x=" + x + ", y=" + y + ", photo_url="
+				+ photo_url + ", description=" + description + ", numvote=" + numvote + ", numpositive=" + numpositive
 				+ ", points=" + points + ", category=" + category + "]";
 	}
 }

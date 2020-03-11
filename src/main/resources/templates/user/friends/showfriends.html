@@ -25,11 +25,11 @@
 							<span th:text="${l.photo}"></span>
 						</div>	
 						<div class="info">
-							<span th:text="${l.public_name}"></span>
+							<span th:text="${l.publicname}"></span>
 						</div>
 						<div>
-							<a th:href="@{'/user/friends/acceptInv/' + ${l.user_id}}">Akceptuj</a>
-							<a th:href="@{'/user/friends/rejectInv/' + ${l.user_id}}">Odrzuć</a>
+							<a th:href="@{'/user/friends/acceptInv/' + ${l.userid}}">Akceptuj</a>
+							<a th:href="@{'/user/friends/rejectInv/' + ${l.userid}}">Odrzuć</a>
 						</div>
 					</div>
 				</td>
@@ -40,9 +40,9 @@
 		<table>
 			<tr th:each="f : ${miniListFriends}">
 				<td th:text="${f.photo}"></td>
-				<td th:text="${f.public_name}"></td>
+				<td th:text="${f.publicname}"></td>
 				<td>
-					<a th:href="@{'/user/friends/deletetFriend/' + ${f.user_id}}">Usuń</a>
+					<a th:href="@{'/user/friends/deletetFriend/' + ${f.userid}}">Usuń</a>
 				</td>
 			</tr>
 		</table>

@@ -8,8 +8,8 @@ import com.chex.model.Album;
 
 public interface AlbumDAO extends JpaRepository<Album, Long> {
 	
-	@Query(value = "select new java.lang.Boolean(count(*) > 0 ) from Album where userId=:userId and albumId=:albumId")
-	Boolean isAlbumForUserExist(@Param("userId") Long user_is, @Param("albumId") Long albumId);
+	@Query(value = "select new java.lang.Boolean(count(*) > 0 ) from Album where userid=:userid and albumid=:albumid")
+	Boolean isAlbumForUserExist(@Param("userid") Long user_is, @Param("albumid") Long albumId);
 	
 
 }

@@ -1,28 +1,24 @@
 package com.chex.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "invitation")
 public class Invitation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long pk;
-	@Column(name = "user_id")
-	private Long userId;
+	private Long userid;
 	private Long inviters;
 	
 	public Invitation() {
 	}
 
-	public Invitation(Long user_id, Long inviters) {
-		this.userId = user_id;
+	public Invitation(Long userid, Long inviters) {
+		this.userid = userid;
 		this.inviters = inviters;
 	}
 
@@ -34,12 +30,12 @@ public class Invitation {
 		this.pk = pk;
 	}
 
-	public Long getUser_id() {
-		return userId;
+	public Long getUserid() {
+		return userid;
 	}
 
-	public void setUser_id(Long user_id) {
-		this.userId = user_id;
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
 
 	public Long getInviters() {
@@ -52,6 +48,6 @@ public class Invitation {
 
 	@Override
 	public String toString() {
-		return "Invitation [pk=" + pk + ", user_id=" + userId + ", inviters=" + inviters + "]";
+		return "Invitation [pk=" + pk + ", userid=" + userid + ", inviters=" + inviters + "]";
 	}
 }

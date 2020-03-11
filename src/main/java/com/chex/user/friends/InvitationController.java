@@ -32,7 +32,7 @@ public class InvitationController {
 	
 	@RequestMapping(value = "/user/friends/sendInv", method = RequestMethod.POST)
 	public String sendInvitation(@RequestParam("id") Long id, Principal principal) {
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();
 		Invitation inv = new Invitation(id,myId);
 		invitationDAO.save(inv);
 		return "redirect:/user/friend";
@@ -40,7 +40,7 @@ public class InvitationController {
 	
 	@GetMapping(value = "/user/friends/acceptInv/{id}")
 	public String acceptInvitation(@PathVariable("id") Long id, Principal principal) {
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();
 		MyFriends me = myFriendsDAO.findById(myId).orElse(null);
 		MyFriends myfriend = myFriendsDAO.findById(id).orElse(null);
 		if(me == null || myfriend == null)
@@ -57,7 +57,7 @@ public class InvitationController {
 	
 	@GetMapping(value = "/user/friends/rejectInv/{id}")
 	public String rejecttInvitation(@PathVariable("id") Long id, Principal principal) {
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();		
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();		
 		Invitation inv = invitationDAO.findByUserIdAndInviters(myId, id);
 		invitationDAO.delete(inv);
 		return "redirect:/user/friend";
@@ -65,7 +65,7 @@ public class InvitationController {
 	
 	@GetMapping(value = "/user/friends/deletetInv/{id}")
 	public String deletetInvitation(@PathVariable("id") Long id, Principal principal) {
-		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();		
+		Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();		
 		Invitation inv = invitationDAO.findByUserIdAndInviters(id, myId);
 		System.out.println(inv);
 		invitationDAO.delete(inv);

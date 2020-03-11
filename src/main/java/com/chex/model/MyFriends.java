@@ -10,25 +10,23 @@ import javax.persistence.Id;
 @Entity
 public class MyFriends {
 	@Id
-	@Column(name = "user_id")
-	private Long user_id;
-	@Column(name = "user_friends_id")
+	private Long userid;
 	private String userFriendsId;
 	
 	public MyFriends() {
 	}
 
-	public MyFriends(Long user_id, String userFriendsId) {
-		this.user_id = user_id;
+	public MyFriends(Long userid, String userFriendsId) {
+		this.userid = userid;
 		this.userFriendsId = userFriendsId;
 	}
-
-	public Long getUser_id() {
-		return user_id;
+	
+	public Long getUserid() {
+		return userid;
 	}
 
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
 
 	public String getUserFriendsId() {
@@ -41,9 +39,9 @@ public class MyFriends {
 
 	@Override
 	public String toString() {
-		return "MyFriendsController [user_id=" + user_id + ", UserFriendsId=" + userFriendsId + "]";
+		return "MyFriends [userid=" + userid + ", userFriendsId=" + userFriendsId + "]";
 	}
-	
+
 	public List<Long> toList(){
 		List<Long> list = new ArrayList<>();
 		if(userFriendsId == null || userFriendsId.isBlank())return list;

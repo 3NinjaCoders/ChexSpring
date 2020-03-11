@@ -19,21 +19,21 @@
 				<td></td>
 			</tr>
 			<tr th:each="s : ${seach_list}">
-				<td th:text="${s.public_name}"></td>
+				<td th:text="${s.publicname}"></td>
 				<td th:text="${s.photo}"></td>
 				<td th:switch="${s.personStatus}" >
 					<div th:case="'Unknown'">
 						<form th:action="@{/user/friends/sendInv}" method="post">
-							<input type="hidden" name="id" th:value="${s.user_id}">
+							<input type="hidden" name="id" th:value="${s.userid}">
 							<button type="submit"> Dodaj</button>
 						</form>
 					</div>
 					<div th:case="'Invited'">
-					<a th:href="@{'/user/firiends/acceptInv/' + ${s.user_id}}">Przyjmij</a>
-					<a th:href="@{'/user/firiends/rejectInv/' + ${s.user_id}}">Odrzuć</a>
+					<a th:href="@{'/user/firiends/acceptInv/' + ${s.userid}}">Przyjmij</a>
+					<a th:href="@{'/user/firiends/rejectInv/' + ${s.userid}}">Odrzuć</a>
 					</div>
 					<div th:case="'IsInvited'">
-						<a th:href="@{'/user/friends/deletetInv/' + ${s.user_id}}">Cofnij zaproszenie</a>
+						<a th:href="@{'/user/friends/deletetInv/' + ${s.userid}}">Cofnij zaproszenie</a>
 					</div>
 					<div th:case="'IsFriend'">
 						<span>Znajomy</span>

@@ -12,10 +12,10 @@ public class VisitedPlace {
 	@Id
 	@GeneratedValue
 	private Long pk;
-	private Long userId;
-	private Long albumId;
+	private Long userid;
+	private Long albumid;
 	private String placename;
-	private String placeId;
+	private String placeid;
 	private String description;
 	private int likes;
 	private Date visitedDate;
@@ -23,13 +23,13 @@ public class VisitedPlace {
 	public VisitedPlace() {
 	}
 
-	public VisitedPlace(Long userId, Long albumId, String placename, String placeId, String description,
+	public VisitedPlace(Long pk, Long userid, Long albumid, String placename, String placeid, String description,
 			int likes, Date visitedDate) {
-		super();
-		this.userId = userId;
-		this.albumId = albumId;
+		this.pk = pk;
+		this.userid = userid;
+		this.albumid = albumid;
 		this.placename = placename;
-		this.placeId = placeId;
+		this.placeid = placeid;
 		this.description = description;
 		this.likes = likes;
 		this.visitedDate = visitedDate;
@@ -43,20 +43,20 @@ public class VisitedPlace {
 		this.pk = pk;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getUserid() {
+		return userid;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
 
-	public Long getAlbumId() {
-		return albumId;
+	public Long getAlbumid() {
+		return albumid;
 	}
 
-	public void setAlbumId(Long albumId) {
-		this.albumId = albumId;
+	public void setAlbumid(Long albumid) {
+		this.albumid = albumid;
 	}
 
 	public String getPlacename() {
@@ -67,12 +67,12 @@ public class VisitedPlace {
 		this.placename = placename;
 	}
 
-	public String getPlaceId() {
-		return placeId;
+	public String getPlaceid() {
+		return placeid;
 	}
 
-	public void setPlaceId(String placeId) {
-		this.placeId = placeId;
+	public void setPlaceid(String placeid) {
+		this.placeid = placeid;
 	}
 
 	public String getDescription() {
@@ -101,8 +101,8 @@ public class VisitedPlace {
 
 	@Override
 	public String toString() {
-		return "VisitedPlace [pk=" + pk + ", userId=" + userId + ", albumId=" + albumId + ", placename=" + placename
-				+ ", placeId=" + placeId + ", description=" + description + ", likes=" + likes + ", visitedDate="
+		return "VisitedPlace [pk=" + pk + ", userid=" + userid + ", albumid=" + albumid + ", placename=" + placename
+				+ ", placeid=" + placeid + ", description=" + description + ", likes=" + likes + ", visitedDate="
 				+ visitedDate + "]";
 	}
 }

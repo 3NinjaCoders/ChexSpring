@@ -14,8 +14,8 @@
 		Id: <p th:text="${id}"></p>
 		<p th:text="${path}"></p>
 			<form th:action="@{/admin/newplace/addplace}" method="post" th:object="${formPlace}" enctype="multipart/form-data">
-				<p th:if="${#fields.hasErrors('place_id')}" th:errors="*{place_id}"></p>
-				<input type="hidden" name="place_id" th:value="${id}">
+				<p th:if="${#fields.hasErrors('placeid')}" th:errors="*{place_id}"></p>
+				<input type="hidden" name="placeid" th:value="${id}">
 				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 				Nazwa <input type="text" name="name"><br>
 				<p th:if="${#fields.hasErrors('x')}" th:errors="*{x}"></p>

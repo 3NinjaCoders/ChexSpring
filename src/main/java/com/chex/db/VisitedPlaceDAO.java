@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import com.chex.model.VisitedPlace;
 
 public interface VisitedPlaceDAO extends JpaRepository<VisitedPlace, Long> {
-	List<VisitedPlace> findByUserId(Long userId);
-	VisitedPlace findByAlbumId(Long albumId);
-	VisitedPlace findByPlaceId(String placeId);
+	List<VisitedPlace> findByUserid(Long userId);
+	VisitedPlace findByAlbumid(Long albumId);
+	VisitedPlace findByPlaceid(String placeId);
 	
 	List<VisitedPlace> findTopByOrderByPkAsc();
 }

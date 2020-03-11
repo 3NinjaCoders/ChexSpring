@@ -26,7 +26,7 @@ public class MyPlacesController {
 	public String myplaces(Principal principal, Model model) {
 		
 		UserAuth me = userAuthDAO.findByUsername(principal.getName());
-		List<VisitedPlace> vp_list = visitedPlaceDAO.findByUserId(me.getUserId());
+		List<VisitedPlace> vp_list = visitedPlaceDAO.findByUserid(me.getUserid());
 		model.addAttribute("visitedList", vp_list);
 		
 		return "user/places/myplaces";

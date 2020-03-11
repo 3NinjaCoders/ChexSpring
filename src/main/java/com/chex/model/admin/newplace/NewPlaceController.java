@@ -48,7 +48,7 @@ public class NewPlaceController {
 		List<DoubleObject> countries = new ArrayList<>();
 		countries.add(new DoubleObject("NN", "Nowy"));
 		for(Place p : countr) {
-			countries.add(new DoubleObject(p.getPlace_id(), p.getName()));
+			countries.add(new DoubleObject(p.getPlaceid(), p.getName()));
 		}
 		String id = continent + "000000000000";
 		model.addAttribute("countries", countries);
@@ -75,7 +75,7 @@ public class NewPlaceController {
 		List<DoubleObject> regions = new ArrayList<>();
 		regions.add(new DoubleObject("NN", "Nowy"));
 		for(Place p : reg) {
-			regions.add(new DoubleObject(p.getPlace_id(), p.getName()));
+			regions.add(new DoubleObject(p.getPlaceid(), p.getName()));
 		}
 		String newid = country.getPlace().substring(0,5)+ "000000000";
 		model.addAttribute("regions", regions);
@@ -103,7 +103,7 @@ public class NewPlaceController {
 		List<DoubleObject> subregions = new ArrayList<>();
 		subregions.add(new DoubleObject("NN", "Nowy"));
 		for(Place p : subreg) {
-			subregions.add(new DoubleObject(p.getPlace_id(), p.getName()));
+			subregions.add(new DoubleObject(p.getPlaceid(), p.getName()));
 		}
 		String newid = region.getPlace().substring(0,8)+ "000000";
 		model.addAttribute("subregions", subregions);
@@ -140,10 +140,10 @@ public class NewPlaceController {
 	}
 	
 	private String preparePath(String id) {
-		Place continent = placeDAO.findById(id.substring(0,2) + "000000000000").orElse(null);
-		Place country = placeDAO.findById(id.substring(0,5) + "000000000").orElse(null);
-		Place region = placeDAO.findById(id.substring(0,8) + "000000").orElse(null);
-		Place subregion = placeDAO.findById(id).orElse(null);
+		Place continent = placeDAO.findByPlaceid(id.substring(0,2) + "000000000000");
+		Place country = placeDAO.findByPlaceid(id.substring(0,5) + "000000000");
+		Place region = placeDAO.findByPlaceid(id.substring(0,8) + "000000");
+		Place subregion = placeDAO.findByPlaceid(id);
 		
 		String path = continent.getName();
 		
@@ -176,7 +176,7 @@ public class NewPlaceController {
 			sid = Integer.toString(nid);
 			sid = id + sid;
 			System.out.println(sid);
-		}while(placeDAO.existsById(sid));
+		}while(placeDAO.existsByPlaceid(sid));
 		return sid;
 	}
 	
@@ -191,8 +191,8 @@ public class NewPlaceController {
 		ModelAndView mv = new ModelAndView();
 		new NewPlaceValidator().validate(formplace, errors);
 		
-		if(placeDAO.existsById(formplace.getPlace_id())) {
-			errors.rejectValue("place_id", "addnewplace.validation.id.exist");
+		if(placeDAO.existsByPlaceid(formplace.getPlaceid())) {
+			errors.rejectValue("placeid", "addnewplace.validation.id.exist");
 		}
 		
 		if(errors.hasErrors()) {
@@ -218,7 +218,7 @@ public class NewPlaceController {
 	private Place fillPlace(FormPlace fp) {
 		System.out.println(fp);
 		Place place = new Place();
-		place.setPlace_id(fp.getPlace_id());
+		place.setPlaceid(fp.getPlaceid());
 		place.setName(fp.getName());
 		place.setX(Double.parseDouble(fp.getX()));
 		place.setY(Double.parseDouble(fp.getY()));
@@ -226,8 +226,8 @@ public class NewPlaceController {
 		place.setPhoto_url(fp.getPhoto_url());
 		place.setCategory(fp.getCategory());
 		place.setPoints(Integer.parseInt(fp.getPoints()));
-		place.setNum_positive(0);
-		place.setNum_vote(0);
+		place.setNumpositive(0);
+		place.setNumvote(0);
 		System.out.println(place);
 		return place;
 	}
@@ -240,7 +240,7 @@ public class NewPlaceController {
 		String p = "/uploadfiles/placephoto/";
 
 		Path absolutePath = currentPath.toAbsolutePath();
-		String path1 = absolutePath + "/src/main/resources/static/uploadfiles/placephoto/"+ place.getPlace_id() + "." + orginalname.substring(orginalname.length()-3, orginalname.length());
+		String path1 = absolutePath + "/src/main/resources/static/uploadfiles/placephoto/"+ place.getPlaceid() + "." + orginalname.substring(orginalname.length()-3, orginalname.length());
 		//byte[] bytes = photo.getBytes();
 		Path path = Paths.get(path1);
 		//Files.write(path, bytes);

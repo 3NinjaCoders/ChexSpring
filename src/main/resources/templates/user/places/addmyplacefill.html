@@ -17,7 +17,7 @@
 		<p th:text="${place.name}">
 		
 		<form th:action="@{/user/addmyplace/addtodb}" enctype="multipart/form-data" method="post">
-			<input type="hidden" name="id" th:value="${place.place_id}">
+			<input type="hidden" name="id" th:value="${place.placeid}">
 			<input type="file" name="photos">
 			<label for="description">Opis</label>
 			<input type="text" name="description" id="description">

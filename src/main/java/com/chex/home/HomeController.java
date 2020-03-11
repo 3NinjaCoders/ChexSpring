@@ -55,7 +55,7 @@ public class HomeController {
    
    @RequestMapping("/user/home")
    public String userhome(Principal principal, Model model) {
-	   	Long myId = userAuthDAO.findByUsername(principal.getName()).getUserId();
+	   	Long myId = userAuthDAO.findByUsername(principal.getName()).getUserid();
 	   	List<VisitedPlace> lasttwenty =  visitedPlaceDAO.findTopByOrderByPkAsc();
 	   	model.addAttribute("vp_list", lasttwenty);
    		return "user/home";

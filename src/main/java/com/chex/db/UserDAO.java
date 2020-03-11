@@ -10,7 +10,7 @@ import com.chex.model.User;
 
 public interface UserDAO extends JpaRepository<User, Long>{
 	
-	@Query(value = "FROM User where public_name like %:search%")
+	@Query(value = "FROM User where publicname like %:search%")
 	List<User> findAllContainPublicName(@Param("search") String search);
 
 }
